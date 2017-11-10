@@ -1,0 +1,16 @@
+# This file is a "template" of what your parameters.yml file should look like
+# Set parameters here that may be different on each deployment target of the app, e.g. development, staging, production.
+# https://symfony.com/doc/current/best_practices/configuration.html#infrastructure-related-configuration
+parameters:
+  database_driver: pdo_mysql
+  database_host: ${MYSQL_HOST}
+  # This is not the host port, but as classical Docker networking is used, regular 3306
+  database_port: 3306
+  database_name: ${MYSQL_DB}
+  database_user: root
+  database_password: ${MYSQL_ROOT_PASSWORD}
+  secret: ${SECRET}
+  mailer_transport: smtp
+  mailer_host: 127.0.0.1
+  mailer_user: null
+  mailer_password: null
