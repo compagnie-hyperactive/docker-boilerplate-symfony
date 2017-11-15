@@ -12,10 +12,11 @@ So far, just __download archive__ and __extract it__ in the __target project dir
 First of all, specify parameters needed for the project
 
 ##### Directories
-- __SYMFONY_HOST_RELATIVE_APP_PATH__: This is the relative path from project initial path. Default to `./symfony`. _Note: a volume will be created on this path in order to persist app Symfony file_. 
+- __SYMFONY_HOST_RELATIVE_APP_PATH__: This is the relative path from project initial path. Default to `./symfony`. _Note: a volume will be created on this path in order to persist Symfony app files_. 
 - __LOGS_DIR__: The logs directory.
 
 ##### Host
+- __HOST_USER__: Your current username. Needed to ensure creation (directories...) with your current user to preserve mapping between container and host
 - __HOST_UID__: Your current user host ID (uid). This is mandatory to map the UID between PHP container and host, in order to let you edit files both in container an through host volume access.
 - __HOST_GID__: Your current main group host ID (gid). (Not used so far)
 
@@ -32,7 +33,7 @@ First of all, specify parameters needed for the project
 
 ##### Ports    
 
-You can have multiple projects using this boilerplate, but without changing ports, only one project can be up at a time, because port 80 is used to expose Nginx.
+You can have multiple projects using this boilerplate, but without changing ports, only one project can be up at a time, because port 80 is used to expose Apache.
 
 - __APPLICATION_WEB_PORT__: default to `80`.
 - __PHP_MY_ADMIN_PORT__: default to `81`.
@@ -61,6 +62,12 @@ Then, on day-to-day usage, just run
 _Note : Once you have stop one project, you can up another one safely._
 
 _Note : All volumes set will ensure to persist both app files and database._
+
+### Reset from scratch
+If you want to reset everything, just
+1. Run `docker-compose down` 
+2. Remove the __SYMFONY_HOST_RELATIVE_APP_PATH__ and the __MYSQL_HOST_VOLUME_PATH__
+3. Then goes back on `bash init.sh`
 
 ### Symfony
 Accessible on `localhost` by default.
