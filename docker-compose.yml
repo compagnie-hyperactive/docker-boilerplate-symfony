@@ -23,7 +23,7 @@ services:
   php:
     env_file: ./.env
     build:
-      context: docker/images/php-fpm7.0
+      context: docker/images/php-fpm7.1
       args:
         UID: ${HOST_UID}
     volumes:
