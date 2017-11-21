@@ -11,7 +11,8 @@ RUN a2enmod proxy_fcgi
 RUN a2enmod rewrite
 
 ADD app.conf /etc/apache2/sites-available/
-RUN a2ensite app
+RUN a2ensite app.conf
+RUN a2dissite 000-default.conf
 
 EXPOSE 80
 
