@@ -33,6 +33,7 @@ envsubst < ./parameters.yml.dist > ${SYMFONY_HOST_RELATIVE_APP_PATH}/app/config/
 if ! hash docker-compose 2>/dev/null; then
     echo "docker-compose not found. Install..."
     sudo curl -L https://github.com/docker/compose/releases/download/1.17.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
+    sudo chmod +x /usr/local/bin/docker-compose
 fi
 
 docker-compose up -d --build
