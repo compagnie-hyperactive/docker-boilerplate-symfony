@@ -39,7 +39,13 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
     && php composer-setup.php --install-dir=/usr/local/bin --filename=composer \
     && php -r "unlink('composer-setup.php');"
 
+
+
 RUN usermod -u ${UID} www-data
+
+# Set .bashrc for www-data
+#RUN "echo 'alias sf3=\"php bin/console\"' >> /var/www/.bashrc"
+#RUN chown -R www-data:www-data /var/www
 
 WORKDIR /var/www/html
 

@@ -20,7 +20,8 @@ if ! hash symfony 2>/dev/null; then
     sudo curl -LsS https://symfony.com/installer -o /usr/local/bin/symfony
     sudo chmod a+x /usr/local/bin/symfony
 fi
-symfony new ${SYMFONY_HOST_RELATIVE_APP_PATH}
+sudo symfony self-update
+symfony new ${SYMFONY_HOST_RELATIVE_APP_PATH} ${SYMFONY_VERSION}
 
 # Copy .env file to Symfony install, to be able to use it in Symfony (3.2+)
 cp ./.env ${SYMFONY_HOST_RELATIVE_APP_PATH}/
@@ -41,5 +42,5 @@ docker-compose up -d --build
 docker-compose exec php rm /var/www/html/app/config/parameters.yml
 
 # Run composer update
-docker-compose exec -u www-data php composer update --no-interaction
-#docker-compose exec -u www-data php sh -c "echo 'alias sf3=\"php bin/console\"' >> ~/.bashrc"
+docker-compose exec --user www-data php composer update --no-interaction
+docker-compose exec --user www-data php sh -c "echo 'alias sf3=\"php bin/console\"' >> ~/.bashrc"
