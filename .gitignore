@@ -1,3 +1,4 @@
 .idea
 data/mysql/5.7/*
 docker/logs/apache/*
+app/.composer
