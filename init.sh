@@ -38,6 +38,7 @@ fi
 
 docker-compose up -d --build
 
+docker-compose restart
 
 # Remove initial parameters.yml file to force new generation
 docker-compose exec php rm /var/www/html/app/config/parameters.yml
