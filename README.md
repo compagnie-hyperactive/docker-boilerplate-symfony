@@ -3,7 +3,12 @@ This boilerplate is a ready-to-start customizable LAMP stack with Symfony and PH
 __Warning : for Linux users only__.
 
 ## Installation
-So far, just __download archive__ and __extract it__ in the __target project directory__ (i.e `/home/your_user/my_project`).
+
+Use Composer to initiate project.
+
+```
+composer create-project lch/docker-symfony target-dir 1.0.0
+```
 
 ## Configuration
 ### Custom parameters

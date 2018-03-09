@@ -1,0 +1,14 @@
+{
+  "name": "lch/docker-symfony",
+  "type": "project",
+  "description": "Ready-To-Start LAMP stack with Symfony and PHPMyAdmin",
+  "keywords": ["docker", "symfony", "lamp", "phpmyadmin"],
+  "homepage": "https://github.com/compagnie-hyperactive/docker-boilerplate-wordpress",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Nicolas BONNIOT",
+      "email": "nicolas@devgiants.fr"
+    }
+  ]
+}
