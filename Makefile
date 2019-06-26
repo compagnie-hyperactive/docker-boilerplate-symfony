@@ -10,6 +10,22 @@ bash-php: up
 bash-php-root: up
 	docker-compose exec php bash
 
+
+install-symfony: build
+	# Create skeleton using last version available
+	docker-compose exec -u www-data php composer create-project symfony/website-skeleton ${RELATIVE_APP_PATH}/tmp
+
+	# append SF .env file to stack .env
+	cat "${RELATIVE_APP_PATH}/tmp/.env" >> .env
+
+	# remove tmp/.env file now its content is appended
+	rm ${RELATIVE_APP_PATH}/tmp/.env
+
+	# move all app up
+	mv ${RELATIVE_APP_PATH}/tmp/* ${RELATIVE_APP_PATH}
+	mv ${RELATIVE_APP_PATH}/tmp/.* ${RELATIVE_APP_PATH}
+
+
 # Build app
 install: build composer-install migrate
 

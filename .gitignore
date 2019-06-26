@@ -1,3 +1,5 @@
 .idea
 data
 docker/logs
+.composer
+.composer_cache
