@@ -18,12 +18,18 @@ install-symfony: build
 	# append SF .env file to stack .env
 	cat "${RELATIVE_APP_PATH}/tmp/.env" >> .env
 
-	# remove tmp/.env file now its content is appended
-	rm ${RELATIVE_APP_PATH}/tmp/.env
+	# append SF .env file to stack .env
+	cat "${RELATIVE_APP_PATH}/tmp/.gitignore" >> .gitignore
+
+	# remove tmp/.env and /tmp/.gitignore file now its content is appended
+	rm ${RELATIVE_APP_PATH}/tmp/.env ${RELATIVE_APP_PATH}/tmp/.gitignore
 
 	# move all app up
 	mv ${RELATIVE_APP_PATH}/tmp/* ${RELATIVE_APP_PATH}
-	mv ${RELATIVE_APP_PATH}/tmp/.* ${RELATIVE_APP_PATH}
+	mv ${RELATIVE_APP_PATH}/tmp/.env.test ${RELATIVE_APP_PATH}
+
+	# rm tmp folder
+	rm -r ${RELATIVE_APP_PATH}/tmp
 
 
 # Build app

@@ -3,3 +3,6 @@ data
 docker/logs
 .composer
 .composer_cache
+
+# Start SF appending
+
