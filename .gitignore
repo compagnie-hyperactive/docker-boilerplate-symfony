@@ -1,4 +1,8 @@
 .idea
-data/mysql/5.7/*
-docker/logs/apache/*
-app/.composer
+data
+docker/logs
+.composer
+.composer_cache
+
+# Start SF appending
+
