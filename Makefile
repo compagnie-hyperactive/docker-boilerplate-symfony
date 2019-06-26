@@ -33,7 +33,7 @@ install-symfony: build
 
 
 # Build app
-install: build composer-install migrate
+install-app: build composer-install migrate
 
 	# Configure Yarn storage
 	docker-compose exec -u www-data php yarn config set global-folder ${YARN_GLOBAL_FOLDER}
