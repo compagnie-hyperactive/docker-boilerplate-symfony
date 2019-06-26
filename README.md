@@ -48,7 +48,7 @@ You have to run `make install-symfony`. This script will
 2. Copy the `.env` content from Symfony app to existing `.env`.
 3. Copy the `.gitignore` content from Symfony app to existing `.gitignore`.
 
-_Note : once `env` updated, after Symfony install, you have to edit the elements added to make them use predefined variables (for example MySQL connection URL)._
+_Note : once `.env` updated, after Symfony install, you have to edit the elements added to make them use predefined variables (for example MySQL connection URL)._
 
 ### Day-to-day usage
 Then, on day-to-day usage, just run 
@@ -82,7 +82,7 @@ Make an Encore assets generation (prod mode)
 ### `encore-watch`
 Make an Encore assets generation (watch mode)
 ### `install-symfony`
-Install Symfony as described above
+Install Symfony as described above. Will also install the Maker and Migrations bundle. 
 ### `install-app`
 Execute all steps to install your app on top of Symfony installation. This commands executes :
 1. `build` command

@@ -31,6 +31,11 @@ install-symfony: build
 	# rm tmp folder
 	rm -r ${RELATIVE_APP_PATH}/tmp
 
+	# Install migrations
+	docker-compose exec -u www-data php composer require doctrine/doctrine-migrations-bundle
+
+	# Install maker
+	docker-compose exec -u www-data php composer require symfony/maker-bundle --dev
 
 # Build app
 install-app: build composer-install migrate
