@@ -7,7 +7,7 @@ __Warning : for Linux/Mac users only__.
 Use Composer to initiate project.
 
 ```
-composer create-project lch/docker-symfony target-dir 1.0.0
+composer create-project lch/docker-symfony target-dir 0.1.1
 ```
 
 ## Configuration
