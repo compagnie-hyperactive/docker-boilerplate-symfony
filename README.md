@@ -7,7 +7,7 @@ __Warning : for Linux/Mac users only__.
 Use Composer to initiate project.
 
 ```
-composer create-project lch/docker-symfony target-dir 0.1.1
+composer create-project lch/docker-symfony target-dir 0.1.2
 ```
 
 ## Configuration
@@ -64,50 +64,49 @@ _Note : All volumes set will ensure to persist both app files and database._
 
 ## `Makefile` commands available
 
-### `up`
-Makes system live. Also substitute `www-data` UID with given UID to avoid write permissions problems.
-### `down`
-Down the containers.
-### `build`
-Build the containers. To be used to force containers recreation.
-### `composer-install`
-Execute `composer install`
+### `assets-install`
+Execute Symfony `assets:install --symlink` command.
 ### `bash-php`
 Gives a shell in php container with www-data user.
 ### `bash-php-root`
 Gives a shell in php container with root user.
+### `build`
+Build the containers. To be used to force containers recreation.
 ### `cache-clear`
-Execute Symfony cache clear command
-### `assets-install`
-Execute Symfony `assets:install --symlink` command
-### `encore-dev`
-Make an Encore assets generation (dev mode)
-### `encore-prod`
-Make an Encore assets generation (prod mode)
-### `encore-watch`
-Make an Encore assets generation (watch mode)
-### `install-symfony`
-Install Symfony as described above. Will also install the Maker and Migrations bundle. 
-### `install-app`
-Execute all steps to install your app on top of Symfony installation. This commands executes :
-1. `build` command
-2. `composer-install` command
-3. `composer-install` command
-4. `migrate` command
-5. Configure `Yarn` cache and global folder
-6. Install NPM packages
-7. Run a production assets generation
+Execute Symfony cache clear command.
+### `composer-install`
+Execute `composer install`.
 ### `dsu-dump`
 This runs a `doctrine:schema:update --dump-sql`.
 ### `dsu-force`
 This runs a `doctrine:schema:update --force`.
-### `migrate`
-This runs a `doctrine:migrations:migrate`.
-### `make-migration`
-This runs a `make:migration`.
+### `down`
+Down the containers.
+### `encore-dev`
+Make an Encore assets generation (dev mode).
+### `encore-prod`
+Make an Encore assets generation (prod mode).
+### `encore-watch`
+Make an Encore assets generation (watch mode).
 ### `fixtures-load`
 This runs a `doctrine:fixtures:load`.
-
+### `install-symfony`
+Install Symfony as described above. Will also install the Maker and Migrations bundle. 
+### `install-app`
+Execute all steps to install your app on top of Symfony installation. This commands executes :
+1. `build` command.
+2. `composer-install` command.
+3. `composer-install` command.
+4. `migrate` command.
+5. Configure `Yarn` cache and global folder.
+6. Install NPM packages.
+7. Run a production assets generation.
+### `make-migration`
+This runs a `make:migration`.
+### `migrate`
+This runs a `doctrine:migrations:migrate`.
+### `up`
+Makes system live. Also substitute `www-data` UID with given UID to avoid write permissions problems.
 
 ### PhpMyAdmin
 Accessible on `localhost:8801` by default. Use `MYSQL_USER` and `MYSQL_PASSWORD` to connect.

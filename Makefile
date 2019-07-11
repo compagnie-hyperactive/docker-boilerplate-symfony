@@ -24,6 +24,9 @@ install-symfony: build
 	# remove tmp/.env and /tmp/.gitignore file now its content is appended
 	rm ${RELATIVE_APP_PATH}/tmp/.env ${RELATIVE_APP_PATH}/tmp/.gitignore
 
+	# remove vendor folder as it will be replaced by Symfony one
+	rm -rf vendor
+
 	# move all app up
 	mv ${RELATIVE_APP_PATH}/tmp/* ${RELATIVE_APP_PATH}
 	mv ${RELATIVE_APP_PATH}/tmp/.env.test ${RELATIVE_APP_PATH}
