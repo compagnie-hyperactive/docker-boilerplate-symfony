@@ -1,4 +1,4 @@
-version: '2'
+version: '3.5'
 services:
   mysql:
     env_file: ./.env
@@ -26,13 +26,12 @@ services:
   php:
     env_file: .env
     build:
-      context: docker/images/php-fpm7.2
+      context: docker/images/php-fpm7.3
       args:
         UID: ${HOST_UID}
         TIMEZONE: ${TIMEZONE}
     volumes:
       - ${RELATIVE_APP_PATH}:/var/www/html
-#    user: ${HOST_UID}:${HOST_GID}
 
   apache:
     env_file: .env
@@ -45,10 +44,10 @@ services:
     environment:
       FPM_HOST: php:9000
 #      XDEBUG_CONFIG: remote_host=172.22.0.1
-    volumes_from:
-      - php
     volumes:
       - ${LOGS_DIR}/apache/:/var/log/apache2/
+      # TODO use named volume syntax
+      - ${RELATIVE_APP_PATH}:/var/www/html
     links:
       - mysql
       - php

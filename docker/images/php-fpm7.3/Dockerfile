@@ -1,4 +1,4 @@
-FROM php:7.2.19-fpm-stretch
+FROM php:7.3.16-fpm-stretch
 
 MAINTAINER Nicolas BONNIOT <nicolas@devgiants.fr>
 
@@ -13,8 +13,10 @@ RUN apt-get update && apt-get install -y \
     unzip \
     nano \
     curl \
+    wget \
     gnupg \
     apt-transport-https \
+    python3 \
     # For imagick
     libmagickwand-dev --no-install-recommends \
     zlib1g-dev \
@@ -25,10 +27,10 @@ RUN ln -snf /usr/share/zoneinfo/${TIMEZONE} /etc/localtime && echo ${TIMEZONE} >
 && printf '[PHP]\ndate.timezone = "%s"\n', ${TIMEZONE} > /usr/local/etc/php/conf.d/tzone.ini \
 && "date"
 
-RUN pecl install xdebug-2.6.1
+RUN pecl install xdebug-2.9.4
 
 # Type docker-php-ext-install to see available extensions
-RUN docker-php-ext-install pdo pdo_mysql zip
+RUN docker-php-ext-install pdo pdo_mysql zip xml
 RUN docker-php-ext-enable xdebug
 
 RUN pecl install imagick && docker-php-ext-enable imagick
@@ -48,6 +50,10 @@ RUN apt-get install -y nodejs
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 RUN apt-get update && apt-get install yarn
+
+# Symfony CLI install
+RUN wget https://get.symfony.com/cli/installer -O - | bash
+RUN cp /root/.symfony/bin/symfony /usr/local/bin/symfony
 
 RUN usermod -u ${UID} www-data
 
