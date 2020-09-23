@@ -37,8 +37,9 @@ install-symfony: build
 	# Install migrations
 	docker-compose exec -u www-data php composer require doctrine/doctrine-migrations-bundle
 
-	# Install maker
+	# Install dev helpers maker
 	docker-compose exec -u www-data php composer require symfony/maker-bundle --dev
+	docker-compose exec -u www-data php composer require phpstan/phpstan --dev
 
 # Build app
 install-app: build composer-install migrate
