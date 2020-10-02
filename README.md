@@ -7,7 +7,7 @@ __Warning : for Linux/Mac users only__.
 Use Composer to initiate project.
 
 ```
-composer create-project devgiants/docker-symfony target-dir 0.1.5
+composer create-project devgiants/docker-symfony target-dir 0.1.6
 ```
 
 ## Configuration

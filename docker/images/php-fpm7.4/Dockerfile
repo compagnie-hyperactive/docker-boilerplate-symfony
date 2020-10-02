@@ -1,4 +1,4 @@
-FROM php:7.3.16-fpm-stretch
+FROM php:7.4-fpm
 
 MAINTAINER Nicolas BONNIOT <nicolas@devgiants.fr>
 
@@ -27,7 +27,7 @@ RUN ln -snf /usr/share/zoneinfo/${TIMEZONE} /etc/localtime && echo ${TIMEZONE} >
 && printf '[PHP]\ndate.timezone = "%s"\n', ${TIMEZONE} > /usr/local/etc/php/conf.d/tzone.ini \
 && "date"
 
-RUN pecl install xdebug-2.9.4
+RUN pecl install xdebug-2.9.8
 
 # Type docker-php-ext-install to see available extensions
 RUN docker-php-ext-install pdo pdo_mysql zip xml
@@ -35,7 +35,7 @@ RUN docker-php-ext-enable xdebug
 
 RUN pecl install imagick && docker-php-ext-enable imagick
 
-COPY config/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+#COPY config/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
 
 # Composer install
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
@@ -43,7 +43,7 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
     && php -r "unlink('composer-setup.php');"
 
 # Node install, for Encore
-RUN curl -sL https://deb.nodesource.com/setup_11.x | bash -
+RUN curl -sL https://deb.nodesource.com/setup_12.x | bash -
 RUN apt-get install -y nodejs
 
 # Yarn install
